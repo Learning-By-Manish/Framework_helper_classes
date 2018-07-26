@@ -1,0 +1,84 @@
+package com.intuit.qbo.subscription.framework.helper.assertionHelper;
+
+import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import com.intuit.qbo.subscription.framework.helper.Logger.LoggerHelper;
+import com.intuit.qbo.subscription.framework.testbase.TestBase;
+
+
+public class VerificationHelper extends TestBase {
+
+	private static final  Logger log = LoggerHelper.getLogger(VerificationHelper.class);
+
+	public static synchronized boolean verifyElementPresent( WebElement element) {
+		boolean isDispalyed = false;
+		try {
+			 isDispalyed= element.isDisplayed();
+		}
+		catch(Exception ex) {
+			log.info("Element not found " + ex);
+		}
+		
+		return isDispalyed;
+	}
+	
+	public static synchronized boolean verifyElementNotPresent( WebElement element) {
+		boolean isDispalyed = false;
+		try {
+			 element.isDisplayed();
+		}
+		catch(Exception ex) {
+			log.info("Element not found " + ex);
+			isDispalyed = true;
+		}
+		
+		return isDispalyed;
+	}
+	
+	public static synchronized boolean verifyTextEquals( WebElement element,String expectedText) {
+		boolean flag = false;
+		try {
+			String actualText=element.getText();
+			if(actualText.equals(expectedText)) {
+				return flag=true;
+			}
+			else {
+				return flag;
+			}
+		}
+		catch(Exception ex) {
+			log.info("Element not found " + ex);
+			return flag;
+		}
+	}
+	
+
+	public static synchronized String getElementText( WebElement element) {
+		
+		String elementText = null;
+		try {
+			elementText=element.getText();		
+		}
+		catch(Exception ex) {
+			log.info("Element not found " + ex);	
+		}
+		return elementText;
+	}
+	
+	public String getText(WebElement locator) {
+		log.info("Locator : " + locator);
+		return locator.getText();
+	}
+	
+	public boolean IsElementPresentQuick(By locator) {
+		boolean flag = driver.findElements(locator).size() >= 1;
+		log.info(flag);
+		System.out.println();
+		return flag;
+	}
+
+	
+	
+}
