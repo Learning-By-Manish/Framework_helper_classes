@@ -10,7 +10,7 @@ import com.intuit.qbo.subscription.framework.helper.Logger.LoggerHelper;
 
 /**
  * 
- * @author bsingh5
+ * @author mgarg4
  *
  */
 public class AlertHelper{
