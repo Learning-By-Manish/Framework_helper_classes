@@ -1,5 +1,5 @@
 
-package com.intuit.qbo.subscription.framework.helper.Browser;
+package com.manish.qbo.subscription.framework.helper.Browser;
 
 import java.util.LinkedList;
 import java.util.Set;
